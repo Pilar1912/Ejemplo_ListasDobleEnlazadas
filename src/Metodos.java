@@ -6,7 +6,8 @@ public class Metodos {
     Nodo cola;
 
     // Agregar estudiante al final
-    public void agregar(Scanner sc) {
+    public String agregar(Scanner sc) {
+        String respuesta = null;
 
         System.out.print("Ingrese el ID: ");
         int id = sc.nextInt();
@@ -33,15 +34,17 @@ public class Metodos {
             cola = nuevo;
         }
 
-        System.out.println("Estudiante agregado correctamente.");
+        respuesta = "Estudiante agregado correctamente.";
+        return respuesta;
     }
 
     // Mostrar desde el inicio hasta el final
-    public void mostrarInicioFin() {
+    public String mostrarInicioFin() {
+        String respuesta = "";
 
         if (cabeza == null) {
-            System.out.println("La lista está vacía.");
-            return;
+            respuesta = "La lista está vacía.";
+            return respuesta;
         }
 
         Nodo actual = cabeza;
@@ -56,14 +59,16 @@ public class Metodos {
 
             actual = actual.siguiente;
         }
+        return respuesta;
     }
 
     // Mostrar desde el final hasta el inicio
-    public void mostrarFinInicio() {
+    public String mostrarFinInicio() {
+        String respuesta = "";
 
         if (cola == null) {
-            System.out.println("La lista está vacía.");
-            return;
+            respuesta = "La lista está vacía.";
+            return respuesta;
         }
 
         Nodo actual = cola;
@@ -78,10 +83,11 @@ public class Metodos {
 
             actual = actual.anterior;
         }
+        return respuesta;
     }
 
     // Buscar estudiante por ID
-    public void buscar(Scanner sc) {
+    public String buscar(Scanner sc) {
 
         System.out.print("Ingrese el ID que desea buscar: ");
         int id = sc.nextInt();
@@ -97,17 +103,18 @@ public class Metodos {
                 System.out.println("Nombre: " + actual.Nombre);
                 System.out.println("Edad: " + actual.Edad);
 
-                return;
+                return "Estudiante encontrado.";
             }
 
             actual = actual.siguiente;
         }
 
-        System.out.println("No se encontró un estudiante con ese ID.");
+        return "No se encontró un estudiante con ese ID.";
     }
 
     // Eliminar estudiante por ID
-    public void eliminar(Scanner sc) {
+    public String eliminar(Scanner sc) {
+        String respuesta = null;
 
         System.out.print("Ingrese el ID del estudiante a eliminar: ");
         int id = sc.nextInt();
@@ -141,13 +148,14 @@ public class Metodos {
                     actual.siguiente.anterior = actual.anterior;
                 }
 
-                System.out.println("Estudiante eliminado correctamente.");
-                return;
+                respuesta = "Estudiante eliminado correctamente.";
+                return respuesta;
             }
 
             actual = actual.siguiente;
         }
 
-        System.out.println("No se encontró un estudiante con ese ID.");
+        respuesta = "No se encontró un estudiante con ese ID.";
+        return respuesta;
     }
 }

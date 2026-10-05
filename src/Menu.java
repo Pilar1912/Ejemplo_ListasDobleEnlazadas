@@ -26,23 +26,28 @@ public class Menu {
             switch (opcion) {
 
                 case 1:
-                    lista.agregar(sc);
+                    String respuestaA = lista.agregar(sc);
+                    System.out.println(respuestaA);
                     break;
 
                 case 2:
-                    lista.mostrarInicioFin();
+                    String respuestaB = lista.mostrarInicioFin();
+                    System.out.println(respuestaB);
                     break;
 
                 case 3:
-                    lista.mostrarFinInicio();
+                    String respuestaC = lista.mostrarFinInicio();
+                    System.out.println(respuestaC);
                     break;
 
                 case 4:
-                    lista.buscar(sc);
+                    String respuestaD = lista.buscar(sc);
+                    System.out.println(respuestaD);
                     break;
 
                 case 5:
-                    lista.eliminar(sc);
+                    String respuestaE = lista.eliminar(sc);
+                    System.out.println(respuestaE);
                     break;
 
                 case 6:
