@@ -2,8 +2,8 @@ import java.util.Scanner;
 
 public class Metodos {
 
-    Nodo inicio;
-    Nodo fin;
+    Nodo cabeza;
+    Nodo cola;
 
     // Agregar estudiante al final
     public void agregar(Scanner sc) {
@@ -21,16 +21,16 @@ public class Metodos {
         Nodo nuevo = new Nodo(id, nombre, edad);
 
         // Si la lista está vacía
-        if (inicio == null) {
+        if (cabeza == null) {
 
-            inicio = nuevo;
-            fin = nuevo;
+            cabeza = nuevo;
+            cola = nuevo;
 
         } else {
 
-            fin.siguiente = nuevo;
-            nuevo.anterior = fin;
-            fin = nuevo;
+            cola.siguiente = nuevo;
+            nuevo.anterior = cola;
+            cola = nuevo;
         }
 
         System.out.println("Estudiante agregado correctamente.");
@@ -39,12 +39,12 @@ public class Metodos {
     // Mostrar desde el inicio hasta el final
     public void mostrarInicioFin() {
 
-        if (inicio == null) {
+        if (cabeza == null) {
             System.out.println("La lista está vacía.");
             return;
         }
 
-        Nodo actual = inicio;
+        Nodo actual = cabeza;
 
         while (actual != null) {
 
@@ -61,12 +61,12 @@ public class Metodos {
     // Mostrar desde el final hasta el inicio
     public void mostrarFinInicio() {
 
-        if (fin == null) {
+        if (cola == null) {
             System.out.println("La lista está vacía.");
             return;
         }
 
-        Nodo actual = fin;
+        Nodo actual = cola;
 
         while (actual != null) {
 
@@ -86,7 +86,7 @@ public class Metodos {
         System.out.print("Ingrese el ID que desea buscar: ");
         int id = sc.nextInt();
 
-        Nodo actual = inicio;
+        Nodo actual = cabeza;
 
         while (actual != null) {
 
@@ -112,27 +112,27 @@ public class Metodos {
         System.out.print("Ingrese el ID del estudiante a eliminar: ");
         int id = sc.nextInt();
 
-        Nodo actual = inicio;
+        Nodo actual = cabeza;
 
         while (actual != null) {
 
             if (actual.Id == id) {
 
                 // Caso 1: es el primer nodo
-                if (actual == inicio) {
-                    inicio = actual.siguiente;
+                if (actual == cabeza) {
+                    cabeza = actual.siguiente;
 
-                    if (inicio != null) {
-                        inicio.anterior = null;
+                    if (cabeza != null) {
+                        cabeza.anterior = null;
                     } else {
-                        fin = null;
+                        cola = null;
                     }
 
                 // Caso 2: es el último nodo
-                } else if (actual == fin) {
+                } else if (actual == cola) {
 
-                    fin = actual.anterior;
-                    fin.siguiente = null;
+                    cola = actual.anterior;
+                    cola.siguiente = null;
 
                 // Caso 3: está en el medio
                 } else {
